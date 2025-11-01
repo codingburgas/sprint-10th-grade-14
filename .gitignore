@@ -1,0 +1,16 @@
+.vs/
+*.vcxproj.user
+*.VC.db
+*.VC.opendb
+
+Debug/
+Release/
+x64/
+*.obj
+*.exe
+*.pdb
+*.idb
+
+*.log
+*.tlog
+ipch/
