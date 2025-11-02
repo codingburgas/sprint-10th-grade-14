@@ -1,5 +1,5 @@
-#include "../include/app.h"
-#include "../include/mainMenu.h"
+#include "app.h"
+#include "mainMenu.h"
 
 App::App(Vector2 setScreen, std::string setName)
 	: screen(setScreen), name(setName), gameState(MENU)
