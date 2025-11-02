@@ -3,7 +3,7 @@
 GameState mainMenu()
 {
 
-	Texture2D background = LoadTexture("../../Team14/assets/photo12.png");
+	Texture2D background = LoadTexture("assets/testbackground.jpg");
 
 
 	while (!WindowShouldClose())
