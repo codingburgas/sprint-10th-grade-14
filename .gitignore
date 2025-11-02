@@ -1,16 +1,25 @@
+# Visual Studio
 .vs/
 *.vcxproj.user
 *.VC.db
 *.VC.opendb
 
+# Build output
+bin/
+bin-int/
 Debug/
 Release/
 x64/
+
+# Compiled files
 *.obj
 *.exe
 *.pdb
 *.idb
+*.lib
+*.dll
 
+# Logs and intermediate build files
 *.log
 *.tlog
 ipch/
