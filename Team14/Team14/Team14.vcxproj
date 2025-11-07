@@ -102,12 +102,17 @@
     <ClCompile Include="src\game.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\mainMenu.cpp" />
+    <ClCompile Include="src\mazegeneration.cpp" />
+    <ClCompile Include="src\player.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\app.h" />
     <ClInclude Include="src\button.h" />
+    <ClInclude Include="src\config.h" />
     <ClInclude Include="src\game.h" />
     <ClInclude Include="src\mainMenu.h" />
+    <ClInclude Include="src\mazegeneration.h" />
+    <ClInclude Include="src\player.h" />
     <ClInclude Include="src\utils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

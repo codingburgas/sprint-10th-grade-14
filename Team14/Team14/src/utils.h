@@ -8,6 +8,5 @@ enum GameState
 {
 	NIL = 0,
 	MENU,
-	DIFFICULTY_SELECT,
 	GAME
 };

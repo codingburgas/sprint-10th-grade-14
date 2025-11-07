@@ -1,5 +1,6 @@
 #include "app.h"
 #include "mainMenu.h"
+#include "game.h"
 
 App::App(Vector2 setScreen, std::string setName)
 	: screen(setScreen), name(setName), gameState(MENU)
@@ -16,6 +17,8 @@ void App::Run()
 		switch (gameState)
 		{
 		case MENU: gameState = mainMenu();
+			break;
+		case GAME: gameState = game();
 			break;
 		}
 	}
