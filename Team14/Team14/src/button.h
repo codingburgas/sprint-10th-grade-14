@@ -9,6 +9,13 @@ public:
 
 	void Draw();
 	bool isPressed(Vector2 mousePos, bool mousePressed);
+
+	// Add getter methods for debugging
+	int getWidth() const { return texture.width; }
+	int getHeight() const { return texture.height; }
+	Vector2 getPosition() const { return position; }
+	Rectangle getRect() const { return { position.x, position.y, (float)texture.width, (float)texture.height }; }
+
 private:
 	Texture2D texture;
 	Vector2 position;

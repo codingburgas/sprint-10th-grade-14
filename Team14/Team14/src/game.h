@@ -5,4 +5,9 @@
 #include "player.h"
 #include "config.h"
 
-GameState game();
+extern bool gameWon;
+
+void setupGame();
+void updateGame();
+void drawGame();
+GameState game();  

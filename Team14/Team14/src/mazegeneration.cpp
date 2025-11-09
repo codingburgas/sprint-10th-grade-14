@@ -1,15 +1,9 @@
 #include "mazegeneration.h"
 #include "config.h"
 
-struct Cell
-{
-	bool visited;
-	bool topWall, bottomWall, leftWall, rightWall;
-};
-
-Cell maze[gridWidth][gridHeight];
+// Define the variables here (not in header)
+Cell maze[41][41];
 Position goal;
-
 
 void initializeMaze()
 {
@@ -31,7 +25,7 @@ void generateMaze(int x, int y)
 	maze[x][y].visited = true;
 	while (true)
 	{
-		int directions[] = { 0, 1, 2, 3 }; // up, right, down, left
+		int directions[] = { 0, 1, 2, 3 };
 		for (int i = 0; i < 4; i++)
 		{
 			int j = GetRandomValue(i, 3);
@@ -45,13 +39,13 @@ void generateMaze(int x, int y)
 			int nx = x, ny = y;
 			switch (directions[i])
 			{
-			case 0: ny -= 1; // up
+			case 0: ny -= 1;
 				break;
-			case 1: nx += 1; // right
+			case 1: nx += 1;
 				break;
-			case 2: ny += 1; // down
+			case 2: ny += 1;
 				break;
-			case 3: nx -= 1; // left
+			case 3: nx -= 1;
 				break;
 			}
 
@@ -61,13 +55,16 @@ void generateMaze(int x, int y)
 				{
 					maze[x][y].topWall = false;
 					maze[nx][ny].bottomWall = false;
-				} else if (directions[i] == 1) {
+				}
+				else if (directions[i] == 1) {
 					maze[x][y].rightWall = false;
 					maze[nx][ny].leftWall = false;
-				} else if (directions[i] == 2) {
+				}
+				else if (directions[i] == 2) {
 					maze[x][y].bottomWall = false;
 					maze[nx][ny].topWall = false;
-				} else if (directions[i] == 3) {
+				}
+				else if (directions[i] == 3) {
 					maze[x][y].leftWall = false;
 					maze[nx][ny].rightWall = false;
 				}
@@ -81,26 +78,8 @@ void generateMaze(int x, int y)
 	}
 }
 
-void drawMaze()
-{
-	for (int i = 0; i < gridWidth; i++)
-	{
-		for (int j = 0; j < gridHeight; j++)
-		{
-			int posX = i * cellSize;
-			int posY = j * cellSize;
-			if (maze[i][j].topWall) DrawLine(posX, posY, posX + cellSize, posY, WHITE);
-			if (maze[i][j].rightWall) DrawLine(posX + cellSize, posY, posX + cellSize, posY + cellSize, WHITE);
-			if (maze[i][j].bottomWall) DrawLine(posX, posY + cellSize, posX + cellSize, posY + cellSize, WHITE);
-			if (maze[i][j].leftWall) DrawLine(posX, posY, posX, posY + cellSize, WHITE);
-		}
-	}
-}
 
-void drawGoal()
-{
-	DrawRectangle(goal.x * cellSize + 2, goal.y * cellSize + 2, cellSize - 4, cellSize - 4, GREEN);
-}
+
 
 bool hasWall(Position pos, int dx, int dy)
 {

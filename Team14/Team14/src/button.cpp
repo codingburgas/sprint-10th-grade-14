@@ -18,7 +18,7 @@ Button::Button(const char* imagePath, Vector2 imagePosition, float scale)
 
 Button::~Button()
 {
-	UnloadTexture(texture); 
+	UnloadTexture(texture);
 }
 
 void Button::Draw()

@@ -8,5 +8,6 @@ enum GameState
 {
 	NIL = 0,
 	MENU,
+	SIZESELECT, 
 	GAME
 };

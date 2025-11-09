@@ -2,9 +2,19 @@
 
 struct Position
 {
-	int x, y;
+    int x, y;
 };
 
-const int cellSize = 40;
-const int gridWidth = 800 / cellSize;
-const int gridHeight = 600 / cellSize;
+extern int cellSize;
+extern int gridWidth;
+extern int gridHeight;
+
+
+enum MazeSize {
+    SMALL = 0,
+    MEDIUM,
+    LARGE
+};
+
+extern MazeSize currentMazeSize;
+void setMazeSize(MazeSize size);

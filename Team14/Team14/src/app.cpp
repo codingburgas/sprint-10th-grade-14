@@ -1,5 +1,6 @@
 #include "app.h"
 #include "mainMenu.h"
+#include "sizeSelect.h"
 #include "game.h"
 
 App::App(Vector2 setScreen, std::string setName)
@@ -14,12 +15,21 @@ void App::Run()
 {
 	while (gameState != NIL)
 	{
+		PollInputEvents();
+
 		switch (gameState)
 		{
-		case MENU: gameState = mainMenu();
+		case MENU:
+			gameState = mainMenu();
 			break;
-		case GAME: gameState = game();
+		case SIZESELECT:
+			gameState = sizeSelection();
+			break;
+		case GAME:
+			gameState = game();
 			break;
 		}
+
+		PollInputEvents();
 	}
 }

@@ -1,5 +1,6 @@
 #include "player.h"
 
+
 Position player;
 
 void drawPlayer()
@@ -17,5 +18,4 @@ void movePlayer(int dx, int dy)
 
     player.x = newX;
     player.y = newY;
-
 }
