@@ -5,12 +5,14 @@ GameState mainMenu()
 {
     Texture2D background = LoadTexture("assets/background.png");
 
-    int screenWidth = 1440;
+    const int screenWidth = 1440;
     float centerX = screenWidth / 2 - 100;
 
     Button playButton{ "assets/playbutton.png", {centerX, 300}, 0.175 };
     Button storyButton{ "assets/storybutton.png", {centerX, 450}, 0.175 };
     Button quitButton{ "assets/quitbutton.png", {centerX, 600}, 0.175 };
+    Font fontTitle = LoadFontEx("fonts/CinzelDecorative-Black.ttf", 128, 0, 0);
+    Color title = { 245, 210, 123, 255 };
 
     while (!WindowShouldClose())
     {
@@ -38,7 +40,7 @@ GameState mainMenu()
             DrawTexture(background, 0, 0, WHITE);
         }
 
-        DrawText("MAZE GAME", screenWidth / 2 - MeasureText("MAZE GAME", 60) / 2, 100, 60, WHITE);
+        DrawTextEx(fontTitle, "The Lost Way", (Vector2{ 300, 110 }), (float)fontTitle.baseSize, 15, title);
 
         playButton.Draw();
         storyButton.Draw();

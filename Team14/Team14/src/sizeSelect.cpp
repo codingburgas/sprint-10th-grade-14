@@ -10,11 +10,15 @@ GameState sizeSelection()
 
     int screenWidth = 1440;
     float centerX = screenWidth / 2 - 100;
+    int buttonY = 350;
 
-    Button smallButton{ "assets/smallbutton.png", {centerX, 150}, 0.175 };
-    Button mediumButton{ "assets/mediumbutton.png", {centerX, 325}, 0.175 };
-    Button largeButton{ "assets/largebutton.png", {centerX, 500}, 0.175 };
-    Button backButton{ "assets/backbutton.png", {centerX, 675}, 0.175 };
+    Button smallButton{ "assets/smallbutton.png", Vector2(126.0f, buttonY), 0.25 };
+    Button mediumButton{ "assets/mediumbutton.png", Vector2(564.0f, buttonY), 0.25 };
+    Button largeButton{ "assets/largebutton.png", Vector2(1002.0f, buttonY), 0.25 };
+    Button backButton{ "assets/backbutton.png", {595, 650}, 0.2 };
+
+    Font fontTitle = LoadFontEx("fonts/CinzelDecorative-Black.ttf", 100, 0, 0);
+    Color title = { 245, 210, 123, 255 };
 
     while (!WindowShouldClose())
     {
@@ -56,7 +60,7 @@ GameState sizeSelection()
             DrawTexture(background, 0, 0, WHITE);
         }
 
-        DrawText("SELECT MAZE SIZE", screenWidth / 2 - MeasureText("SELECT MAZE SIZE", 60) / 2, 50, 60, YELLOW);
+        DrawTextEx(fontTitle, "Select Difficulty", (Vector2{ 215, 110 }), (float)fontTitle.baseSize, 15, title);
 
         smallButton.Draw();
         mediumButton.Draw();
