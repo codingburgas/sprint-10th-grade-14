@@ -16,14 +16,14 @@ void setMazeSize(MazeSize size) {
         gridHeight = 20;
         break;
     case MEDIUM:
-        cellSize = 26;
-        gridWidth = 30;
-        gridHeight = 30;
+        cellSize = 30;
+        gridWidth = 26;
+        gridHeight = 26;
         break;
     case LARGE:
-        cellSize = 20;
-        gridWidth = 40;
-        gridHeight = 40;
+        cellSize = 24;
+        gridWidth = 34;
+        gridHeight = 34;
         break;
     }
 }
