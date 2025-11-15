@@ -25,14 +25,14 @@ void ResetTextEffects(Story& story) {
 
 
 void DrawShadow(const Story& story, int screenHeight) {
-    DrawEllipse(story.shadowX, screenHeight / 2, 220, 420, { 0,0,0,35 });
+    DrawEllipse(story.shadowX, screenHeight /2, 200, 420, { 0,0,0,35 });
 }
 
 void DrawStoryText(const Story& story) {
     const string txt = story.pages[story.currentPage];
     Vector2 pos = { 50, 120 };
 
-    int fontSize = 28;
+    int fontSize = 26;
     float spacing = 8.0f;
 
     DrawTextEx(GetFontDefault(), TextSubtext(txt.c_str(), 0, (int)story.charsShown), pos, fontSize, spacing, { 255, 240, 200, (unsigned char)story.fadeAlpha });

@@ -41,10 +41,12 @@ void drawGame()
         int mazeWidth = gridWidth * cellSize;
         int mazeHeight = gridHeight * cellSize;
         int offsetX = (screenWidth - mazeWidth) / 2;
-        int offsetY = (screenHeight - mazeHeight) / 2;
+        int offsetY = (screenHeight - mazeHeight+50) / 2;
 
-        
+      
+        DrawRectangleLines(offsetX, offsetY, mazeWidth, mazeHeight, WHITE);
 
+      
         for (int i = 0; i < gridWidth; i++)
         {
             for (int j = 0; j < gridHeight; j++)
@@ -52,10 +54,20 @@ void drawGame()
                 int posX = i * cellSize + offsetX;
                 int posY = j * cellSize + offsetY;
 
-                if (maze[i][j].topWall) DrawLine(posX, posY, posX + cellSize, posY, WHITE);
-                if (maze[i][j].rightWall) DrawLine(posX + cellSize, posY, posX + cellSize, posY + cellSize, WHITE);
-                if (maze[i][j].bottomWall) DrawLine(posX, posY + cellSize, posX + cellSize, posY + cellSize, WHITE);
-                if (maze[i][j].leftWall) DrawLine(posX, posY, posX, posY + cellSize, WHITE);
+              
+                if (j > 0 && maze[i][j].topWall)
+                    DrawLine(posX, posY, posX + cellSize, posY, WHITE);
+
+                
+                if (i < gridWidth - 1 && maze[i][j].rightWall)
+                    DrawLine(posX + cellSize, posY, posX + cellSize, posY + cellSize, WHITE);
+
+                if (j < gridHeight - 1 && maze[i][j].bottomWall)
+                    DrawLine(posX, posY + cellSize, posX + cellSize, posY + cellSize, WHITE);
+
+              
+                if (i > 0 && maze[i][j].leftWall)
+                    DrawLine(posX, posY, posX, posY + cellSize, WHITE);
             }
         }
 
