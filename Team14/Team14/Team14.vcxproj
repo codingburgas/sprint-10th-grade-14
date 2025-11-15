@@ -107,6 +107,7 @@
     <ClCompile Include="src\mazegeneration.cpp" />
     <ClCompile Include="src\player.cpp" />
     <ClCompile Include="src\sizeSelect.cpp" />
+    <ClCompile Include="src\story.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\app.h" />
@@ -117,6 +118,7 @@
     <ClInclude Include="src\mazegeneration.h" />
     <ClInclude Include="src\player.h" />
     <ClInclude Include="src\sizeSelect.h" />
+    <ClInclude Include="src\story.h" />
     <ClInclude Include="src\utils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

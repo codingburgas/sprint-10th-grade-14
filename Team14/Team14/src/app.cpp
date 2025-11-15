@@ -2,6 +2,7 @@
 #include "mainMenu.h"
 #include "sizeSelect.h"
 #include "game.h"
+#include "story.h"
 
 App::App(Vector2 setScreen, std::string setName)
 	: screen(setScreen), name(setName), gameState(MENU)
@@ -21,6 +22,9 @@ void App::Run()
 		{
 		case MENU:
 			gameState = mainMenu();
+			break;
+		case STORY:
+			gameState = story();
 			break;
 		case SIZESELECT:
 			gameState = sizeSelection();

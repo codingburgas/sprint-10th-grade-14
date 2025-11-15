@@ -28,6 +28,8 @@ GameState mainMenu()
         }
         if (storyButton.isPressed(mousePosition, mousePressed))
         {
+            UnloadTexture(background);
+            return STORY;
         }
         if (quitButton.isPressed(mousePosition, mousePressed))
         {
@@ -35,10 +37,8 @@ GameState mainMenu()
         }
 
         ClearBackground(BLACK);
-
-        if (background.id != 0) {
-            DrawTexture(background, 0, 0, WHITE);
-        }
+        DrawTexture(background, 0, 0, WHITE);
+        DrawRectangle(0, 0, 1440, 800, { 0, 0, 0, 100 });
 
         DrawTextEx(fontTitle, "The Lost Way", (Vector2{ 300, 110 }), (float)fontTitle.baseSize, 15, title);
 
