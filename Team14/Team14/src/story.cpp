@@ -11,14 +11,11 @@ struct Story {
     float charsShown = 0.0f;    // float for smooth typing
     float fadeAlpha = 0.0f;
 
-    float fogOffset = 0.0f;
     float shadowX = -300.0f;
 
-    float fogSpeed = 2.0f;
     float typeSpeed = 50.0f;
 
     Texture2D background;
-    Texture2D fog;
 };
 
 void ResetTextEffects(Story& story) {
@@ -26,22 +23,9 @@ void ResetTextEffects(Story& story) {
     story.fadeAlpha = 0.0f;
 }
 
-void DrawFog(const Story& story) {
-    Color fogColor = { 255, 255, 255, 70 };
-    DrawTextureEx(story.fog, { story.fogOffset, 0 }, 0, 1.0f, fogColor);
-    DrawTextureEx(story.fog, { story.fogOffset - story.fog.width, 0 }, 0, 1.0f, fogColor);
-}
 
 void DrawShadow(const Story& story, int screenHeight) {
     DrawEllipse(story.shadowX, screenHeight / 2, 220, 420, { 0,0,0,35 });
-}
-
-void DrawVignette(int screenWidth, int screenHeight) {
-    DrawRectangleGradientEx(
-        { 0,0,(float)screenWidth,(float)screenHeight },
-        { 0,0,0,140 }, { 0,0,0,140 },
-        { 0,0,0,0 }, { 0,0,0,0 }
-    );
 }
 
 void DrawStoryText(const Story& story) {
@@ -72,10 +56,6 @@ void HandleStoryInput(Story& story) {
 void UpdateStory(Story& story, int screenWidth) {
     HandleStoryInput(story);
 
-    // Fog
-    story.fogOffset += story.fogSpeed;
-    if (story.fogOffset > screenWidth) story.fogOffset = 0;
-
     // Shadow
     story.shadowX += 0.4f;
     if (story.shadowX > screenWidth + 200) story.shadowX = -300;
@@ -91,10 +71,8 @@ void UpdateStory(Story& story, int screenWidth) {
 void DrawStoryScreen(const Story& story, int screenWidth, int screenHeight) {
     DrawTexture(story.background, 0, 0, WHITE);
     DrawRectangle(0, 0, screenWidth, screenHeight, { 0,0,0,150 });
-    DrawFog(story);
     DrawShadow(story, screenHeight);
     DrawStoryText(story);
-    DrawVignette(screenWidth, screenHeight);
 
     DrawText("<- Back | Next ->", 50, screenHeight - 90, 20, { 200,200,200,180 });
     DrawText("Press BACKSPACE to return", 50, screenHeight - 50, 20, { 200,200,200,140 });
@@ -123,7 +101,6 @@ GameState story() {
     };
 
     s.background = LoadTexture("assets/background.png");
-    s.fog = LoadTexture("assets/fog.png");
 
     while (!WindowShouldClose()) {
         UpdateStory(s, screenWidth);
@@ -137,7 +114,6 @@ GameState story() {
     }
 
     UnloadTexture(s.background);
-    UnloadTexture(s.fog);
 
     return NIL;
 }
