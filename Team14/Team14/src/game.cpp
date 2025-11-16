@@ -9,6 +9,7 @@ bool gameWon = false;
 Texture2D boyTexture;
 Texture2D villageTexture;
 Texture2D background;
+Texture2D treasure;
 
 TimerData timer = { 0.0f, 0.0f, false };
 
@@ -17,6 +18,7 @@ void setupGame()
     boyTexture = LoadTexture("assets/boyimage.png");
     villageTexture = LoadTexture("assets/villageimage.png");
     background = LoadTexture("assets/background.png");
+    treasure = LoadTexture("assets/treasure.png");
 
     loadWallTextures();
 
@@ -99,17 +101,14 @@ void drawGame()
                 int posY = j * cellSize + offsetY;
                 if (maze[i][j].collectible)
                 {
-                    int centerX = posX + cellSize / 2;
-                    int centerY = posY + cellSize / 2;
-                    int half = cellSize / 4;
+                    int drawX = posX + (cellSize - treasure.width) / 2;
+                    int drawY = posY + (cellSize - treasure.height) / 2;
 
-                    Vector2 v1 = { (float)centerX, (float)(centerY - half) };
-                    Vector2 v2 = { (float)(centerX - half), (float)(centerY) };
-                    Vector2 v3 = { (float)(centerX + half), (float)(centerY) };
-                    Vector2 v4 = { (float)centerX, (float)(centerY + half) };
+                    Rectangle src = { 0, 0, (float)treasure.width + 5, (float)treasure.height + 5 };
+                    Rectangle dst = { posX + 3, posY + 3, (float)cellSize, (float)cellSize };
+                    Vector2 origin = { 0, 0 };
 
-                    DrawTriangle(v1, v2, v3, GOLD);
-                    DrawTriangle(v1, v4, v2, GOLD);
+                    DrawTexturePro(treasure, src, dst, origin, 0.0f, WHITE);
                 }
 
 

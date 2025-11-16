@@ -29,3 +29,4 @@ void setMazeSize(MazeSize size) {
         break;
     }
 }
+    
