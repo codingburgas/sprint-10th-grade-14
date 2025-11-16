@@ -3,9 +3,13 @@
 #include "player.h"
 
 bool gameWon = false;
+Texture2D boyTexture;
+Texture2D villageTexture;
 
 void setupGame()
 {
+    boyTexture = LoadTexture("assets/boyImage.png");
+    villageTexture = LoadTexture("assets/villageImage.png");
     initializeMaze();
     generateMaze(0, 0);
     player.x = 0;
@@ -71,21 +75,27 @@ void drawGame()
             }
         }
 
-        DrawRectangle(
+        Rectangle src = { 0, 0, boyTexture.width, boyTexture.height };
+        Rectangle dest = {
             player.x * cellSize + offsetX + 2,
             player.y * cellSize + offsetY + 2,
             cellSize - 4,
-            cellSize - 4,
-            BLUE
-        );
+            cellSize - 4
+        };
+        Vector2 origin = { 0, 0 };
 
-        DrawRectangle(
+        DrawTexturePro(boyTexture, src, dest, origin, 0.0f, WHITE);
+
+        Rectangle srcGoal = { 0, 0, villageTexture.width, villageTexture.height };
+        Rectangle destGoal = {
             goal.x * cellSize + offsetX + 2,
             goal.y * cellSize + offsetY + 2,
             cellSize - 4,
-            cellSize - 4,
-            GREEN
-        );
+            cellSize - 4
+        };
+        Vector2 originGoal = { 0, 0 };
+
+        DrawTexturePro(villageTexture, srcGoal, destGoal, originGoal, 0.0f, WHITE);
     }
 
     EndDrawing();
@@ -102,9 +112,12 @@ GameState game()
 
         if (IsKeyPressed(KEY_ESCAPE))
         {
-            break;
+            UnloadTexture(boyTexture);
+            UnloadTexture(villageTexture);
+            return MENU;
         }
     }
-
-    return MENU;
+    UnloadTexture(boyTexture);
+    UnloadTexture(villageTexture);
+    return NIL;
 }
