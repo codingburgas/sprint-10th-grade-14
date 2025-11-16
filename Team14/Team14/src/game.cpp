@@ -4,7 +4,7 @@
 #include "player.h"
 #include "config.h"
 
-
+int collectedItems = 0;
 bool gameWon = false;
 Texture2D boyTexture;
 Texture2D villageTexture;
@@ -22,6 +22,7 @@ void setupGame()
 
     initializeMaze();
     generateMaze(0, 0);
+    generateCollectibles(15);
     player.x = 0;
     player.y = 0;
     goal.x = gridWidth - 1;
@@ -56,6 +57,7 @@ void updateGame()
 
 void drawGame()
 {
+    DrawText(TextFormat("Collected: %d", collectedItems), 50, 50, 30, YELLOW);
     BeginDrawing();
     ClearBackground(BLACK);
     DrawTexture(background, 0, 0, WHITE);
@@ -95,6 +97,22 @@ void drawGame()
             {
                 int posX = i * cellSize + offsetX;
                 int posY = j * cellSize + offsetY;
+                if (maze[i][j].collectible)
+                {
+                    int centerX = posX + cellSize / 2;
+                    int centerY = posY + cellSize / 2;
+                    int half = cellSize / 4;
+
+                    Vector2 v1 = { (float)centerX, (float)(centerY - half) };
+                    Vector2 v2 = { (float)(centerX - half), (float)(centerY) };
+                    Vector2 v3 = { (float)(centerX + half), (float)(centerY) };
+                    Vector2 v4 = { (float)centerX, (float)(centerY + half) };
+
+                    DrawTriangle(v1, v2, v3, GOLD);
+                    DrawTriangle(v1, v4, v2, GOLD);
+                }
+
+
 
                 if (maze[i][j].topWall) {
                     Rectangle dest = { posX, posY, cellSize, 10 };

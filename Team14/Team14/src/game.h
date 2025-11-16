@@ -4,6 +4,7 @@
 #include "player.h"
 #include "walltexture.h"
 
+extern int collectedItems;
 extern bool gameWon;
 extern TimerData timer; 
 

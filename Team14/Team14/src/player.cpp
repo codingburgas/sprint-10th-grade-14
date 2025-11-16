@@ -1,4 +1,5 @@
 #include "player.h"
+#include "game.h"
 
 
 Position player;
@@ -19,4 +20,12 @@ void movePlayer(int dx, int dy)
 
     player.x = newX;
     player.y = newY;
+    maze[player.x][player.y].visited = true;
+
+    if (maze[player.x][player.y].collectible)
+    {
+        maze[player.x][player.y].collectible = false;
+        collectedItems++; 
+    }
+
 }

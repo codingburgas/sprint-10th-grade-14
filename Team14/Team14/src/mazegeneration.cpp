@@ -76,6 +76,24 @@ void generateMaze(int x, int y)
         if (!moved) break;
     }
 }
+void generateCollectibles(int count)
+{
+    for (int i = 0; i < count; i++)
+    {
+        int x = GetRandomValue(0, gridWidth - 1);
+        int y = GetRandomValue(0, gridHeight - 1);
+
+        // Don't put collectibles at start or goal
+        if ((x == 0 && y == 0) || (x == gridWidth - 1 && y == gridHeight - 1))
+        {
+            i--;
+            continue;
+        }
+
+        maze[x][y].collectible = true;
+    }
+}
+
 
 bool hasWall(Position pos, int dx, int dy)
 {

@@ -9,6 +9,7 @@ struct Cell
 {
     bool visited;
     bool topWall, bottomWall, leftWall, rightWall;
+    bool collectible = false;
 };
 
 extern int cellSize;
