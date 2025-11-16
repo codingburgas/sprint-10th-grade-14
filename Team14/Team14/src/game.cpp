@@ -138,6 +138,11 @@ void drawGame()
         Vector2 originGoal = { 0, 0 };
 
         DrawTexturePro(villageTexture, srcGoal, destGoal, originGoal, 0.0f, WHITE); 
+        // --- NEW: Debug overlay ---
+        std::string debugText = "Player: (" + std::to_string(player.x) + ", " + std::to_string(player.y) + ")";
+        debugText += " | FPS: " + std::to_string(GetFPS());
+        DrawText(debugText.c_str(), 20, 20, 20, RAYWHITE);
+
     }
 
     EndDrawing();
