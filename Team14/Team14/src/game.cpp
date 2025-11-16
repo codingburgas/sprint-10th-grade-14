@@ -2,11 +2,14 @@
 #include "mazegeneration.h"
 #include "walltexture.h"
 #include "player.h"
+#include "config.h"
 
 bool gameWon = false;
 Texture2D boyTexture;
 Texture2D villageTexture;
 Texture2D background;
+
+TimerData timer = { 0.0f, 0.0f, false };
 
 void setupGame()
 {
@@ -14,7 +17,6 @@ void setupGame()
     villageTexture = LoadTexture("assets/villageimage.png");
     background = LoadTexture("assets/background.png");
 
- 
     loadWallTextures();
 
     initializeMaze();
@@ -24,16 +26,33 @@ void setupGame()
     goal.x = gridWidth - 1;
     goal.y = gridHeight - 1;
     gameWon = false;
+
+    
+    loadBestTimes();
+    timer.currentTime = 0.0f;
+    timer.bestTime = bestTimes[currentMazeSize];
+    timer.timerRunning = true;
 }
 
 void updateGame()
 {
     if (gameWon) return;
+
+   
+    if (timer.timerRunning) {
+        updateTimer();
+    }
+
     if (IsKeyPressed(KEY_RIGHT)) movePlayer(1, 0);
     if (IsKeyPressed(KEY_LEFT)) movePlayer(-1, 0);
     if (IsKeyPressed(KEY_UP)) movePlayer(0, -1);
     if (IsKeyPressed(KEY_DOWN)) movePlayer(0, 1);
-    if (player.x == goal.x && player.y == goal.y) gameWon = true;
+
+    if (player.x == goal.x && player.y == goal.y) {
+        gameWon = true;
+        stopTimer();
+        saveBestTime();
+    }
 }
 
 void drawGame()
@@ -46,6 +65,20 @@ void drawGame()
     if (gameWon)
     {
         DrawText("You win!", 1440 / 2 - MeasureText("You win!", 30) / 2, 800 / 2 - 15, 30, DARKGREEN);
+
+    
+        char timeText[100];
+        sprintf(timeText, "Time: %.2f seconds", timer.currentTime);
+        DrawText(timeText, 1440 / 2 - MeasureText(timeText, 25) / 2, 800 / 2 + 30, 25, WHITE);
+
+        if (timer.bestTime > 0) {
+            char bestTimeText[100];
+            sprintf(bestTimeText, "Best: %.2f seconds", timer.bestTime);
+            DrawText(bestTimeText, 1440 / 2 - MeasureText(bestTimeText, 25) / 2, 800 / 2 + 70, 25, YELLOW);
+        }
+        else {
+            DrawText("New Best Time!", 1440 / 2 - MeasureText("New Best Time!", 25) / 2, 800 / 2 + 70, 25, GOLD);
+        }
     }
     else
     {
@@ -54,10 +87,10 @@ void drawGame()
         int mazeWidth = gridWidth * cellSize;
         int mazeHeight = gridHeight * cellSize;
         int offsetX = (screenWidth - mazeWidth) / 2;
-        int offsetY = (screenHeight - mazeHeight+50) / 2;
+        int offsetY = (screenHeight - mazeHeight + 50) / 2;
 
-      
-       
+        
+        drawTimer();
 
         for (int i = 0; i < gridWidth; i++)
         {
@@ -137,10 +170,52 @@ void drawGame()
         };
         Vector2 originGoal = { 0, 0 };
 
-        DrawTexturePro(villageTexture, srcGoal, destGoal, originGoal, 0.0f, WHITE); 
+        DrawTexturePro(villageTexture, srcGoal, destGoal, originGoal, 0.0f, WHITE);
     }
 
     EndDrawing();
+}
+
+void startTimer() {
+    timer.timerRunning = true;
+    timer.currentTime = 0.0f;
+}
+
+void stopTimer() {
+    timer.timerRunning = false;
+}
+
+void updateTimer() {
+    if (timer.timerRunning) {
+        timer.currentTime += GetFrameTime();
+    }
+}
+
+void drawTimer() {
+    char timerText[50];
+    sprintf(timerText, "Time: %.2f", timer.currentTime);
+
+   
+    DrawText(timerText, 20, 20, 30, WHITE);
+
+   
+    if (timer.bestTime > 0) {
+        char bestText[50];
+        sprintf(bestText, "Best: %.2f", timer.bestTime);
+        DrawText(bestText, 20, 60, 25, YELLOW);
+    }
+}
+
+void saveBestTime() {
+    if (timer.bestTime == 0 || timer.currentTime < timer.bestTime) {
+        bestTimes[currentMazeSize] = timer.currentTime;
+        timer.bestTime = timer.currentTime;
+        saveBestTimesToFile();  
+    }
+}
+
+void loadBestTimes() {
+    loadBestTimesFromFile();  
 }
 
 GameState game()
@@ -156,12 +231,12 @@ GameState game()
         {
             UnloadTexture(boyTexture);
             UnloadTexture(villageTexture);
-            unloadWallTextures();  // Clean up wall textures
+            unloadWallTextures();
             return MENU;
         }
     }
     UnloadTexture(boyTexture);
     UnloadTexture(villageTexture);
-    unloadWallTextures();  // Clean up wall textures
+    unloadWallTextures();
     return NIL;
 }

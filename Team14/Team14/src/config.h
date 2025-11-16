@@ -23,3 +23,9 @@ enum MazeSize {
 
 extern MazeSize currentMazeSize;
 void setMazeSize(MazeSize size);
+
+extern float bestTimes[3];
+
+
+void saveBestTimesToFile();
+void loadBestTimesFromFile();

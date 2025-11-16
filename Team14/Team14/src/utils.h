@@ -1,16 +1,21 @@
 #pragma once
 
-#include "raylib.h"
+#include <raylib.h>
 #include <string>
-#include "button.h"
-#include <vector>
 
 
-enum GameState
-{
-	NIL = 0,
-	MENU,
-	STORY,
-	SIZESELECT, 
-	GAME
+class Button;
+
+enum GameState {
+    MENU = 0,
+    STORY,
+    SIZESELECT,
+    GAME,
+    NIL
+};
+
+struct TimerData {
+    float currentTime;
+    float bestTime;
+    bool timerRunning;
 };

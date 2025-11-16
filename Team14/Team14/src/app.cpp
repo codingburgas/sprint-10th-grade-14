@@ -3,14 +3,18 @@
 #include "sizeSelect.h"
 #include "game.h"
 #include "story.h"
+#include "config.h" 
 
 App::App(Vector2 setScreen, std::string setName)
 	: screen(setScreen), name(setName), gameState(MENU)
 {
 	InitWindow((int)screen.x, (int)screen.y, name.c_str());
 	SetTargetFPS(60);
+	loadBestTimesFromFile(); 
 }
-App::~App() {}
+App::~App() {
+	saveBestTimesToFile();  
+}
 
 void App::Run()
 {

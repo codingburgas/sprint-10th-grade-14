@@ -1,6 +1,6 @@
 #include "walltexture.h"
 
-// Define texture variables here
+
 Texture2D wallHorizontal;
 Texture2D wallVertical;
 

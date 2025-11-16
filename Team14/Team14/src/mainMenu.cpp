@@ -1,5 +1,6 @@
 #include "mainMenu.h"
 #include "sizeSelect.h" 
+#include "button.h"
 
 GameState mainMenu()
 {

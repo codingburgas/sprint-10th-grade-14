@@ -101,6 +101,7 @@
     <ClCompile Include="src\app.cpp" />
     <ClCompile Include="src\button.cpp" />
     <ClCompile Include="src\config.cpp" />
+    <ClCompile Include="src\filepersistence.cpp" />
     <ClCompile Include="src\game.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\mainMenu.cpp" />
@@ -114,6 +115,7 @@
     <ClInclude Include="src\app.h" />
     <ClInclude Include="src\button.h" />
     <ClInclude Include="src\config.h" />
+    <ClInclude Include="src\filepersistence.h" />
     <ClInclude Include="src\game.h" />
     <ClInclude Include="src\mainMenu.h" />
     <ClInclude Include="src\mazegeneration.h" />

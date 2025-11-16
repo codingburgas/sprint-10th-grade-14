@@ -1,6 +1,7 @@
 #include "sizeSelect.h"
 #include "config.h"
-
+#include "utils.h" 
+#include "button.h" 
 GameState sizeSelection()
 {
     int framesSinceStart = 0;
@@ -62,10 +63,34 @@ GameState sizeSelection()
 
         DrawTextEx(fontTitle, "Select Difficulty", (Vector2{ 215, 110 }), (float)fontTitle.baseSize, 15, title);
 
+      
         smallButton.Draw();
         mediumButton.Draw();
         largeButton.Draw();
         backButton.Draw();
+
+       
+        char smallTime[50], mediumTime[50], largeTime[50];
+
+        if (bestTimes[SMALL] > 0)
+            sprintf(smallTime, "Best: %.2fs", bestTimes[SMALL]);
+        else
+            sprintf(smallTime, "No best time");
+
+        if (bestTimes[MEDIUM] > 0)
+            sprintf(mediumTime, "Best: %.2fs", bestTimes[MEDIUM]);
+        else
+            sprintf(mediumTime, "No best time");
+
+        if (bestTimes[LARGE] > 0)
+            sprintf(largeTime, "Best: %.2fs", bestTimes[LARGE]);
+        else
+            sprintf(largeTime, "No best time");
+
+      
+        DrawText(smallTime, 150, 500, 20, YELLOW);
+        DrawText(mediumTime, 588, 500, 20, YELLOW);
+        DrawText(largeTime, 1026, 500, 20, YELLOW);
 
         EndDrawing();
     }

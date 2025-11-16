@@ -1,4 +1,6 @@
 #include "story.h"
+#include <vector>
+#include <string>
 using namespace std;
 
 const int screenWidth = 1440;

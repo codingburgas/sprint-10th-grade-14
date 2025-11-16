@@ -1,7 +1,6 @@
 #include "mazegeneration.h"
 #include "config.h"
 
-// Define the maze array here
 Cell maze[41][41];
 Position goal;
 
