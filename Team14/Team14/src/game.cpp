@@ -59,11 +59,11 @@ void updateGame()
 
 void drawGame()
 {
-    DrawText(TextFormat("Collected: %d", collectedItems), 50, 50, 30, YELLOW);
     BeginDrawing();
     ClearBackground(BLACK);
     DrawTexture(background, 0, 0, WHITE);
     DrawRectangle(0, 0, 1440, 850, { 0, 0, 0, 100 });
+    DrawText(TextFormat("Collected: %d", collectedItems), 50, 50, 30, YELLOW);
 
     if (gameWon)
     {
@@ -164,12 +164,12 @@ void drawGame()
                 { 0, 0, (float)wallHorizontal.width, (float)wallHorizontal.height },
                 dest, { 0, 0 }, 0.0f, WHITE);
         }
-        Rectangle src = { 0, 0, boyTexture.width, boyTexture.height };
+        Rectangle src = { 0, 0, boyTexture.width - 3, boyTexture.height - 3};
         Rectangle dest = {
-    player.x * cellSize + offsetX,    
-    player.y * cellSize + offsetY,    
-    cellSize,        
-    cellSize       
+            player.x * cellSize + offsetX + 3,    
+            player.y * cellSize + offsetY + 3,    
+            cellSize,        
+            cellSize       
         };
         Vector2 origin = { 0, 0 };
 
@@ -177,7 +177,7 @@ void drawGame()
 
         Rectangle srcGoal = { 0, 0, villageTexture.width, villageTexture.height };
         Rectangle destGoal = {
-            goal.x * cellSize + offsetX + 5,    
+            goal.x * cellSize + offsetX + 7,    
             goal.y * cellSize + offsetY + 5,    
             cellSize - 10,   
             cellSize - 10    
