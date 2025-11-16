@@ -5,11 +5,13 @@
 bool gameWon = false;
 Texture2D boyTexture;
 Texture2D villageTexture;
+Texture2D background;
 
 void setupGame()
 {
     boyTexture = LoadTexture("assets/boyImage.png");
     villageTexture = LoadTexture("assets/villageImage.png");
+    background = LoadTexture("assets/background.png");
     initializeMaze();
     generateMaze(0, 0);
     player.x = 0;
@@ -33,6 +35,8 @@ void drawGame()
 {
     BeginDrawing();
     ClearBackground(BLACK);
+    DrawTexture(background, 0, 0, WHITE);
+    DrawRectangle(0, 0, 1440, 850, { 0, 0, 0, 100 });
 
     if (gameWon)
     {
