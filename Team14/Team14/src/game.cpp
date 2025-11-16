@@ -4,7 +4,7 @@
 #include "player.h"
 #include "config.h"
 
-int collectedItems = 0;
+int collectedItems;
 bool gameWon = false;
 Texture2D boyTexture;
 Texture2D villageTexture;
@@ -25,6 +25,7 @@ void setupGame()
     initializeMaze();
     generateMaze(0, 0);
     generateCollectibles(15);
+    collectedItems = 0;
     player.x = 0;
     player.y = 0;
     goal.x = gridWidth - 1;
