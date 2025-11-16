@@ -2,7 +2,7 @@
 using namespace std;
 
 const int screenWidth = 1440;
-const int screenHeight = 800;
+const int screenHeight = 850;
 
 struct Story {
     vector<string> pages;
@@ -79,8 +79,6 @@ void DrawStoryScreen(const Story& story, int screenWidth, int screenHeight) {
 }
 
 GameState story() {
-    const int screenWidth = 1440;
-    const int screenHeight = 800;
 
     Story s;
 

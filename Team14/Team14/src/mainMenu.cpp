@@ -38,7 +38,7 @@ GameState mainMenu()
 
         ClearBackground(BLACK);
         DrawTexture(background, 0, 0, WHITE);
-        DrawRectangle(0, 0, 1440, 800, { 0, 0, 0, 100 });
+        DrawRectangle(0, 0, 1440, 850, { 0, 0, 0, 100 });
 
         DrawTextEx(fontTitle, "The Lost Way", (Vector2{ 300, 110 }), (float)fontTitle.baseSize, 15, title);
 
