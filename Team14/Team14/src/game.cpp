@@ -55,6 +55,11 @@ void drawGame()
         int mazeHeight = gridHeight * cellSize;
         int offsetX = (screenWidth - mazeWidth) / 2;
         int offsetY = (screenHeight - mazeHeight+50) / 2;
+        // --- NEW: Highlight goal cell ---
+        int goalPosX = goal.x * cellSize + offsetX;
+        int goalPosY = goal.y * cellSize + offsetY;
+        DrawRectangle(goalPosX, goalPosY, cellSize, cellSize, { 0, 255, 0, 100 }); // semi-transparent green
+
 
       
        
@@ -142,6 +147,28 @@ void drawGame()
         std::string debugText = "Player: (" + std::to_string(player.x) + ", " + std::to_string(player.y) + ")";
         debugText += " | FPS: " + std::to_string(GetFPS());
         DrawText(debugText.c_str(), 20, 20, 20, RAYWHITE);
+        // --- NEW: Mini debug panel ---
+        std::string mazeSizeText;
+        switch (currentMazeSize) {
+        case SMALL: mazeSizeText = "SMALL"; break;
+        case MEDIUM: mazeSizeText = "MEDIUM"; break;
+        case LARGE: mazeSizeText = "LARGE"; break;
+        }
+
+        int visitedCount = 0;
+        for (int i = 0; i < gridWidth; i++) {
+            for (int j = 0; j < gridHeight; j++) {
+                if (maze[i][j].visited) visitedCount++;
+            }
+        }
+
+        std::string debugPanel = "Maze Size: " + mazeSizeText + "\n";
+        debugPanel += "Visited Cells: " + std::to_string(visitedCount);
+
+        // Draw a small semi-transparent rectangle as background for panel
+        DrawRectangle(20, 50, 200, 60, { 0, 0, 0, 150 });
+        DrawText(debugPanel.c_str(), 25, 55, 18, YELLOW);
+
 
     }
 
