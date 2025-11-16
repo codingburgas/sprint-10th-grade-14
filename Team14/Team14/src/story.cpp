@@ -84,18 +84,18 @@ GameState story() {
 
     s.pages = {
         "Long ago, the village slept peacefully at the edge of the forest,\n"
-        "where every shadow told a story and every rustle carried a warning.\n"
-        "Now, the boy finds himself lost among towering trees and tangled paths,\n"
-        "chasing the faint glimmer of home.",
+        "\nwhere every shadow told a story and every rustle carried a warning.\n"
+        "\nNow, the boy finds himself lost among towering trees and tangled paths,\n"
+        "\nchasing the faint glimmer of home.",
 
         "Legends speak of wandering spirits that guard the forest’s secrets.\n"
-        "Some say the roots themselves shift to confuse those who stray.\n"
+        "\nSome say the roots themselves shift to confuse those who stray.\n"
         "\n"
-        "But one truth remains:\n"
-        "every step deeper changes the traveler forever.",
+        "\nBut one truth remains:\n"
+        "\nevery step deeper changes the traveler forever.",
 
-        "Tonight, the wind carries whispers of a path unseen.\n"
-        "And the forest watches, patient and waiting, as you take your first step."
+        "\nTonight, the wind carries whispers of a path unseen.\n"
+        "\nAnd the forest watches, patient and waiting, as you take your first step."
     };
 
     s.background = LoadTexture("assets/background.png");
