@@ -5,10 +5,15 @@ struct Position
     int x, y;
 };
 
+struct Cell
+{
+    bool visited;
+    bool topWall, bottomWall, leftWall, rightWall;
+};
+
 extern int cellSize;
 extern int gridWidth;
 extern int gridHeight;
-
 
 enum MazeSize {
     SMALL = 0,

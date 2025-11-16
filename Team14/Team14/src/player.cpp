@@ -5,7 +5,8 @@ Position player;
 
 void drawPlayer()
 {
-    DrawRectangle(player.x * cellSize + 2, player.y * cellSize + 2, cellSize - 4, cellSize - 4, BLUE);
+    DrawRectangle(player.x * cellSize + 10, player.y * cellSize + 10,
+        cellSize - 20, cellSize - 20, BLUE);
 }
 
 void movePlayer(int dx, int dy)

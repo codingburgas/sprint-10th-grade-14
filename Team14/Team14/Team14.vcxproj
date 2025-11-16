@@ -108,6 +108,7 @@
     <ClCompile Include="src\player.cpp" />
     <ClCompile Include="src\sizeSelect.cpp" />
     <ClCompile Include="src\story.cpp" />
+    <ClCompile Include="src\walltexture.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\app.h" />
@@ -120,6 +121,7 @@
     <ClInclude Include="src\sizeSelect.h" />
     <ClInclude Include="src\story.h" />
     <ClInclude Include="src\utils.h" />
+    <ClInclude Include="src\walltexture.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

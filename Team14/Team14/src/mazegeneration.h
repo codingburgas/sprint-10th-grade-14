@@ -1,16 +1,11 @@
 #pragma once
-
 #include "utils.h"
 #include "config.h"
 
-struct Cell
-{
-	bool visited;
-	bool topWall, bottomWall, leftWall, rightWall;
-};
+// Remove the Cell struct definition here since it's in config.h
+// Just declare the maze array and functions
 
-// Increase array size to handle large mazes safely
-extern Cell maze[41][41];  // Changed from [40][40] to [41][41]
+extern Cell maze[41][41];
 extern Position goal;
 
 void initializeMaze();

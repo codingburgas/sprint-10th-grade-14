@@ -1,5 +1,6 @@
 #include "game.h"
 #include "mazegeneration.h"
+#include "walltexture.h"
 #include "player.h"
 
 bool gameWon = false;
@@ -9,9 +10,13 @@ Texture2D background;
 
 void setupGame()
 {
-    boyTexture = LoadTexture("assets/boyImage.png");
-    villageTexture = LoadTexture("assets/villageImage.png");
+    boyTexture = LoadTexture("assets/boyimage.png");
+    villageTexture = LoadTexture("assets/villageimage.png");
     background = LoadTexture("assets/background.png");
+
+ 
+    loadWallTextures();
+
     initializeMaze();
     generateMaze(0, 0);
     player.x = 0;
@@ -52,9 +57,8 @@ void drawGame()
         int offsetY = (screenHeight - mazeHeight+50) / 2;
 
       
-        DrawRectangleLines(offsetX, offsetY, mazeWidth, mazeHeight, WHITE);
+       
 
-      
         for (int i = 0; i < gridWidth; i++)
         {
             for (int j = 0; j < gridHeight; j++)
@@ -62,29 +66,63 @@ void drawGame()
                 int posX = i * cellSize + offsetX;
                 int posY = j * cellSize + offsetY;
 
-              
-                if (j > 0 && maze[i][j].topWall)
-                    DrawLine(posX, posY, posX + cellSize, posY, WHITE);
+                if (maze[i][j].topWall) {
+                    Rectangle dest = { posX, posY, cellSize, 10 };
+                    DrawTexturePro(wallHorizontal,
+                        { 0, 0, (float)wallHorizontal.width, (float)wallHorizontal.height },
+                        dest, { 0, 0 }, 0.0f, WHITE);
+                }
 
-                
-                if (i < gridWidth - 1 && maze[i][j].rightWall)
-                    DrawLine(posX + cellSize, posY, posX + cellSize, posY + cellSize, WHITE);
-
-                if (j < gridHeight - 1 && maze[i][j].bottomWall)
-                    DrawLine(posX, posY + cellSize, posX + cellSize, posY + cellSize, WHITE);
-
-              
-                if (i > 0 && maze[i][j].leftWall)
-                    DrawLine(posX, posY, posX, posY + cellSize, WHITE);
+                if (maze[i][j].leftWall) {
+                    Rectangle dest = { posX, posY, 10, cellSize };
+                    DrawTexturePro(wallVertical,
+                        { 0, 0, (float)wallVertical.width, (float)wallVertical.height },
+                        dest, { 0, 0 }, 0.0f, WHITE);
+                }
             }
         }
 
+        for (int j = 0; j < gridHeight; j++) {
+            int posX = gridWidth * cellSize + offsetX;
+            int posY = j * cellSize + offsetY;
+            Rectangle dest = { posX - 10, posY, 10, cellSize };
+            DrawTexturePro(wallVertical,
+                { 0, 0, (float)wallVertical.width, (float)wallVertical.height },
+                dest, { 0, 0 }, 0.0f, WHITE);
+        }
+
+        for (int i = 0; i < gridWidth; i++) {
+            int posX = i * cellSize + offsetX;
+            int posY = gridHeight * cellSize + offsetY;
+            Rectangle dest = { posX, posY - 10, cellSize, 10 };
+            DrawTexturePro(wallHorizontal,
+                { 0, 0, (float)wallHorizontal.width, (float)wallHorizontal.height },
+                dest, { 0, 0 }, 0.0f, WHITE);
+        }
+
+        for (int j = 0; j < gridHeight; j++) {
+            int posX = gridWidth * cellSize + offsetX;
+            int posY = j * cellSize + offsetY;
+            Rectangle dest = { posX - 10, posY, 10, cellSize };
+            DrawTexturePro(wallVertical,
+                { 0, 0, (float)wallVertical.width, (float)wallVertical.height },
+                dest, { 0, 0 }, 0.0f, WHITE);
+        }
+
+        for (int i = 0; i < gridWidth; i++) {
+            int posX = i * cellSize + offsetX;
+            int posY = gridHeight * cellSize + offsetY;
+            Rectangle dest = { posX, posY - 10, cellSize, 10 };
+            DrawTexturePro(wallHorizontal,
+                { 0, 0, (float)wallHorizontal.width, (float)wallHorizontal.height },
+                dest, { 0, 0 }, 0.0f, WHITE);
+        }
         Rectangle src = { 0, 0, boyTexture.width, boyTexture.height };
         Rectangle dest = {
-            player.x * cellSize + offsetX + 2,
-            player.y * cellSize + offsetY + 2,
-            cellSize - 4,
-            cellSize - 4
+            player.x * cellSize + offsetX + 10,
+            player.y * cellSize + offsetY + 10,
+            cellSize - 20,
+            cellSize - 20
         };
         Vector2 origin = { 0, 0 };
 
@@ -92,14 +130,14 @@ void drawGame()
 
         Rectangle srcGoal = { 0, 0, villageTexture.width, villageTexture.height };
         Rectangle destGoal = {
-            goal.x * cellSize + offsetX + 2,
-            goal.y * cellSize + offsetY + 2,
-            cellSize - 4,
-            cellSize - 4
+            goal.x * cellSize + offsetX + 10,
+            goal.y * cellSize + offsetY + 10,
+            cellSize - 20,
+            cellSize - 20
         };
         Vector2 originGoal = { 0, 0 };
 
-        DrawTexturePro(villageTexture, srcGoal, destGoal, originGoal, 0.0f, WHITE);
+        DrawTexturePro(villageTexture, srcGoal, destGoal, originGoal, 0.0f, WHITE); 
     }
 
     EndDrawing();
@@ -118,10 +156,12 @@ GameState game()
         {
             UnloadTexture(boyTexture);
             UnloadTexture(villageTexture);
+            unloadWallTextures();  // Clean up wall textures
             return MENU;
         }
     }
     UnloadTexture(boyTexture);
     UnloadTexture(villageTexture);
+    unloadWallTextures();  // Clean up wall textures
     return NIL;
 }
