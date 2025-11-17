@@ -5,6 +5,7 @@
 #include "config.h"
 
 int collectedItems;
+bool treasuresGenerated = false;
 bool gameWon = false;
 Texture2D boyTexture;
 Texture2D villageTexture;
@@ -24,7 +25,10 @@ void setupGame()
 
     initializeMaze();
     generateMaze(0, 0);
-    generateCollectibles(15);
+    if (!treasuresGenerated) {
+        generateCollectibles(15);
+        treasuresGenerated = true;  
+    }
     collectedItems = 0;
     player.x = 0;
     player.y = 0;
@@ -238,7 +242,20 @@ void resetTimer() {
     timer.currentTime = 0.0f;
     timer.timerRunning = true;
 }
+void resetGame()
+{
+  
+    collectedItems = 0;
+    player.x = 0;
+    player.y = 0;
+    gameWon = false;
 
+   
+    timer.currentTime = 0.0f;
+    timer.timerRunning = true;
+
+    
+}
 GameState game()
 {
     setupGame();
@@ -250,6 +267,7 @@ GameState game()
 
         if (IsKeyPressed(KEY_ESCAPE))
         {
+            treasuresGenerated = false;
             UnloadTexture(boyTexture);
             UnloadTexture(villageTexture);
             unloadWallTextures();
@@ -259,9 +277,10 @@ GameState game()
        
         if (IsKeyPressed(KEY_R)) {
             resetTimer();
-            setupGame();
+            resetGame();
         }
     }
+    treasuresGenerated = false;
     UnloadTexture(boyTexture);
     UnloadTexture(villageTexture);
     unloadWallTextures();

@@ -7,13 +7,13 @@
 extern int collectedItems;
 extern bool gameWon;
 extern TimerData timer; 
-
+extern bool treasuresGenerated;
 void setupGame();
 void updateGame();
 void drawGame();
 GameState game();
 
-
+void resetGame();
 void startTimer();
 void stopTimer();
 void updateTimer();
