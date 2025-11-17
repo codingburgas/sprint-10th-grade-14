@@ -20,10 +20,10 @@ A lost boy must navigate a tangled forest maze to find his way back to his villa
 
 ---
 
-## 📃 Documentation and  Presentation   <a name="docs"></a>
-- 📜 [Documentation](https://codingburgas-my.sharepoint.com/:w:/r/personal/kbpozharliev23_codingburgas_bg/_layouts/15/Doc.aspx?sourcedoc=%7BB14E1F5E-6254-4437-8269-75BCA6291C27%7D&file=Documentation.docx&action=default&mobileredirect=true&DefaultItemOpen=1&wdOrigin=APPHOME-WEB.DIRECT%2CAPPHOME-WEB.FILEBROWSER.RECENT&wdPreviousSession=3f82c931-08be-46d5-a5f8-0f36480049fa&wdPreviousSessionSrc=AppHomeWeb&ct=1763406338942)
-- 🎤 [Presentation](https://codingburgas-my.sharepoint.com/:p:/r/personal/kbpozharliev23_codingburgas_bg/_layouts/15/Doc.aspx?sourcedoc=%7BEA9DDECD-5258-4988-9173-22CA3D9FCB6C%7D&file=Presentation%201.pptx&action=edit&mobileredirect=true&wdOrigin=SEARCHENGINE.GOOGLE%2CAPPHOME-WEB.BANNER.UPLOAD&wdPreviousSession=c4921769-7de6-4e91-a5d8-0e0553c6d8f7&wdPreviousSessionSrc=AppHomeWeb&ct=1763406276356)
-
+## 📃 Documentation<a name="docs"></a>
+- 📜 [Documentation](https://codingburgas-my.sharepoint.com/:w:/g/personal/kiboychev23_codingburgas_bg/IQAXHq_iNZnlQJ8s3VhW3wbSAb0fgcKTnZ3Ez2-dlQ1_T58?e=gbCvpv)
+- 🎤 [Presentation](https://codingburgas-my.sharepoint.com/:p:/g/personal/kiboychev23_codingburgas_bg/IQDSodL6rO7xRL_dw7vI0a6NAe6si-72Y8_hAYmawCI6aYA?e=z3TEM6)
+- ✅ [QA](https://codingburgas-my.sharepoint.com/:x:/g/personal/kiboychev23_codingburgas_bg/IQA4PiimgVcfTag1qNsPiS4TAf9BS8NvXKbMB-DeZn9-nPk?e=Sq1xFC)
 ---
 
 ## 🚀 Installation  and  Setup <a name="install"></a> 
