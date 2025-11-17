@@ -21,8 +21,8 @@ A lost boy must navigate a tangled forest maze to find his way back to his villa
 ---
 
 ## 📃 Documentation and  Presentation   <a name="docs"></a>
-- 📜 [Documentation]()
-- 🎤 [Presentation]()
+- 📜 [Documentation](https://codingburgas-my.sharepoint.com/:w:/r/personal/kbpozharliev23_codingburgas_bg/_layouts/15/Doc.aspx?sourcedoc=%7BB14E1F5E-6254-4437-8269-75BCA6291C27%7D&file=Documentation.docx&action=default&mobileredirect=true&DefaultItemOpen=1&wdOrigin=APPHOME-WEB.DIRECT%2CAPPHOME-WEB.FILEBROWSER.RECENT&wdPreviousSession=3f82c931-08be-46d5-a5f8-0f36480049fa&wdPreviousSessionSrc=AppHomeWeb&ct=1763406338942)
+- 🎤 [Presentation](https://codingburgas-my.sharepoint.com/:p:/r/personal/kbpozharliev23_codingburgas_bg/_layouts/15/Doc.aspx?sourcedoc=%7BEA9DDECD-5258-4988-9173-22CA3D9FCB6C%7D&file=Presentation%201.pptx&action=edit&mobileredirect=true&wdOrigin=SEARCHENGINE.GOOGLE%2CAPPHOME-WEB.BANNER.UPLOAD&wdPreviousSession=c4921769-7de6-4e91-a5d8-0e0553c6d8f7&wdPreviousSessionSrc=AppHomeWeb&ct=1763406276356)
 
 ---
 
@@ -64,7 +64,6 @@ A lost boy must navigate a tangled forest maze to find his way back to his villa
 
 <p>
   <img src="Team14/Team14/assets/README/Photoshop.png" alt="Photoshop Icon" width=75px>
-  <img src="Team14/Team14/assets/README/Figma.png" alt="Figma Icon" width=75px>
 </p>
 
 ---
@@ -75,6 +74,6 @@ A lost boy must navigate a tangled forest maze to find his way back to his villa
 |  <h3><a href = "https://github.com/KBPozharliev23">Kaloyan Pozharliev</a></h3> | Scrum Trainer | 10G |
 | <h3><a href = "https://github.com/KaloyanBoychev"> Kaloyan Boychev </a></h3>| Backend Developer | 10B |
 | <h3><a href = "https://github.com/MNDiamarov23"> Martin Dimarov </a></h3> |  Frontend Developer  | 10V |
-| <h3><a href = "https://github.com/ELTinchev23"> Emanuil Tinchev</a></h3> | Designer | 10A |
+| <h3><a href = "https://github.com/ELTinchev23"> Emanuil Tinchev</a></h3> | QA | 10A |
 
 ---
