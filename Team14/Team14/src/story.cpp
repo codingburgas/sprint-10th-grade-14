@@ -96,7 +96,7 @@ GameState story() {
         "\nBut one truth remains:\n"
         "\nevery step deeper changes the traveler forever.",
 
-        "\nTonight, the wind carries whispers of a path unseen.\n"
+        "Tonight, the wind carries whispers of a path unseen.\n"
         "\nAnd the forest watches, patient and waiting, as you take your first step."
     };
 
